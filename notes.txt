@@ -1,0 +1,9 @@
+CHAPTER - 1
+
+ceateElement()  creates an object and not an html element.
+while rendering it gets converted to an html.
+If something is already there in the root then it will be replaced by our new react code.
+
+
+CHAPTER – 2
+
