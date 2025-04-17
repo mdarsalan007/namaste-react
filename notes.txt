@@ -1,9 +1,40 @@
-CHAPTER - 1
+**************   CHAPTER - 1   ***************
 
-ceateElement()  creates an object and not an html element.
-while rendering it gets converted to an html.
-If something is already there in the root then it will be replaced by our new react code.
+=> ceateElement()  creates an object and not an html element.
+=> while rendering it gets converted to an html.
+=> If something is already there in the root then it will be replaced by our new react code.
 
 
-CHAPTER – 2
+**************   CHAPTER – 2    ***************
+
+=> package.json is a configuration for npm
+=> transitive dependency - something depends on a thing but tha thing als depends on some other and this chain continues.
+
+#=>           PARCEL
+
+    => dev build
+    => Local server
+    => HMR = Hot Module Replacement.
+    => File watching Algorithm - written in C++
+    => caching - Faster builds
+    => image optimization
+    => Minification
+    => Bundling
+    => Compressing
+    => Consistent hashing
+    => Code splitting
+    => Differential bundling
+    => Diagnostics
+    => Error handling
+    => HTTPs
+    => Tree Shaking - removes unused codes
+    => Different Dev and prod bundles
+
+
+
+    ************   CHAPTER – 3    *************
+
+
+=> JSX - is a javascript syntax by which it is easier to create react element. it looks like HTML but its not HTML.
+=> 
 
