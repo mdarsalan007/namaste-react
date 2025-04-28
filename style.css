@@ -1,83 +1,170 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-.header{
-    margin-top: 0.5rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header {
+  margin-top: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.logo-container img{
-    margin-left: 2rem;
-    width: 4rem;
-    height: 4rem;
+.logo-container img {
+  margin-left: 2rem;
+  width: 4rem;
+  height: 4rem;
 }
-.nav-items ul{
-    margin-right: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+.nav-items ul {
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
-.nav-items ul li{
-    list-style: none;
-    margin: 0 1rem;
-    font-size: 1.2rem;
-    cursor: pointer;
+.nav-items ul li {
+  list-style: none;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
-.body{
-    margin: 1rem;
+.body {
+  margin: 1rem;
 }
-.search{
-    margin: 1rem 0;
+.search {
+  margin: 1rem 0;
 }
-.res-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.15rem;
-    justify-content: flex-start;
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+  justify-content: flex-start;
 }
-.ind-card{
-    width: 14rem;
-    background-color: #e7fbbb;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 0;
+.ind-card {
+  width: 14rem;
+  background-color: #e7fbbb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
 }
-.ind-card:hover{
-    cursor: pointer;
-    /* outline: 1px solid black; */
-    box-shadow: 0 0 10px rgb(80, 78, 78);
+.ind-card:hover {
+  cursor: pointer;
+  /* outline: 1px solid black; */
+  box-shadow: 0 0 10px rgb(80, 78, 78);
 }
-.ind-card img{
-    width: 13rem;
-    height: 10rem;
-    border-radius: 1rem;
+.ind-card img {
+  width: 13rem;
+  height: 10rem;
+  border-radius: 1rem;
 }
-.ind-res-details{
-    width: 13rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    row-gap: 0.5rem;
+.ind-res-details {
+  width: 13rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  row-gap: 0.5rem;
 }
-.filter-btn{
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-    padding: 5px 10px;
-    font-size: 1.2rem;
-    background: #FF9B17;
-    border: 0;
-    outline: 0;
-    border-radius: 2rem;
-    color: #fff;
-    cursor: pointer;
+.filter-btn {
+  color: #fff;
+  cursor: pointer;
+  background: #ff9b17;
+  border: 0;
+  border-radius: 5px;
+  outline: 0;
+  margin: 0.5rem 0.5rem 1rem 1rem;
+  padding: 5px 10px;
+  font-size: 1rem;
+  height: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+  justify-content: flex-start;
+  margin: 0 1rem;
+}
+.shimmer-card {
+  width: 14rem;
+  height: 22rem;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+  animation: shimmer 1s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.login {
+  margin: 0 1rem;
+  width: 4rem;
+  height: 1.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border: 0;
+  outline: 0;
+  background: #ff9b17;
+  border-radius: 5px;
+  color: #fff;
+}
+.filter {
+  display: flex;
+}
+.search {
+  margin: 0.5rem 1rem 1rem 0.5rem;
+}
+.search-box {
+  height: 2rem;
+  width: 20rem;
+  font-size: 1rem;
+  position: relative;
+  padding: 0 0.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+.search button {
+  width: 4rem;
+  height: 2rem;
+  position: absolute;
+  left: 18rem;
+  font-size: 0.9rem;
+  background-color: #ff9b17;
+  color: #fff;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: black;
 }
