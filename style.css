@@ -164,7 +164,86 @@
   border: 0;
   cursor: pointer;
 }
-a{
-    text-decoration: none;
-    color: black;
+a {
+  text-decoration: none;
+  color: black;
+}
+.menu-page {
+  margin: 3rem auto;
+  width: 60vw;
+}
+.menu-page-res-name {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.res-info-box {
+  width: 90%;
+  box-shadow: 0 0 10px black;
+  padding: 5px 5px;
+  margin-bottom: 2rem;
+}
+.rating-line {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 5px 0;
+  color: rgb(77, 77, 77);
+}
+.cuisines-line {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: orangered;
+  padding-bottom: 5px;
+}
+.time-to-reach-line {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+.address-line {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+.category-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0;
+}
+.dish-card-parent {
+  width: 90%;
+  box-shadow: 0 0 10px black;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+}
+.dish-card {
+  width: 70%;
+}
+.dish-card-meal-combo {
+  width: 100%;
+}
+.dish-image {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dish-image img {
+  width: 10rem;
+  height: 7rem;
+}
+.dish-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #313131;
+  margin: 3px 0;
+}
+.dish-price {
+  font-weight: 600;
+  color: #313131;
+  margin: 3px 0;
+}
+.dish-description {
+  color: #5b5a5a;
 }
