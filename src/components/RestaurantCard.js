@@ -1,7 +1,7 @@
 import { CLOUDINARY_URL } from "./utils/constants";
 const RestaurantCard = (props) => {
   return (
-    <div className="ind-card">
+    <div>
       <img src={`${CLOUDINARY_URL}${props.image}`} alt="res-image" />
 
       <div className="ind-res-details">

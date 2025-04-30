@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -17,12 +18,15 @@ const Body = () => {
 
     const json = await data.json();
 
-    setListOfRestaurant(
-      json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards
-    );
-    setfilteredRestaurants(
-      json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards
-    );
+    const listofrestaurantsarr = json?.data?.cards;
+    listofrestaurantsarr.forEach((c) => {
+      const validlistofrestaurants =
+        c.groupedCard?.cardGroupMap?.RESTAURANT?.cards;
+      if (validlistofrestaurants) {
+        setListOfRestaurant(validlistofrestaurants);
+        setfilteredRestaurants(validlistofrestaurants);
+      }
+    });
   };
 
   return listOfRestaurant.length === 0 ? (
@@ -80,15 +84,16 @@ const Body = () => {
           const cuisine = cuisines.join(", ");
 
           return (
-            <RestaurantCard
-              key={id}
-              image={cloudinaryImageId}
-              resName={name}
-              cuisine={cuisine}
-              rating={avgRating}
-              deltime={delTime}
-              costforTwo={costForTwoMessage}
-            />
+            <Link className="ind-card" key={id} to={"/restaurants/" + id}>
+              <RestaurantCard
+                image={cloudinaryImageId}
+                resName={name}
+                cuisine={cuisine}
+                rating={avgRating}
+                deltime={delTime}
+                costforTwo={costForTwoMessage}
+              />
+            </Link>
           );
         })}
       </div>
