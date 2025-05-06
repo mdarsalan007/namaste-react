@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer";
+import Shimmer2 from "./Shimmer2";
 import { useParams } from "react-router-dom";
+import useOnlineStatus from "./utils/useOnlineStatus";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
@@ -60,8 +61,13 @@ const RestaurantMenu = () => {
     setMenuCategories(menucategories);
   }, [menupath]);
 
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false){
+    return <h1>Looks like you are offline. Please check your internet connection.</h1>
+  }
   if (apidatainfo === null) {
-    return <Shimmer />; // fallback if structure is different
+    return <Shimmer2 />; // fallback if structure is different
   }
 
   const {
@@ -98,14 +104,14 @@ const RestaurantMenu = () => {
           </div>
 
           {items.map((item) => {
-            const { id, name, description, price, ratings, imageId } =
+            const { id, name, description, price, defaultPrice,ratings, imageId } =
               item.card.info;
 
             return (
               <div className="dish-card-parent" key={id}>
                 <div className="dish-card">
                   <p className="dish-name">{name}</p>
-                  <p className="dish-price">₹{price / 100}</p>
+                  <p className="dish-price">₹{price/100 ||defaultPrice / 100}</p>
                   <p className="rating-line">
                     <span style={{ color: "green" }}>★</span>
                     {ratings?.aggregatedRating?.rating || 4} (
