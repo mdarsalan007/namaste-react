@@ -1,4 +1,6 @@
-* {
+@import "tailwindcss";
+
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -29,6 +31,20 @@
   font-size: 1.2rem;
   cursor: pointer;
 }
+.city-select{
+  font-size: 0.9rem;
+  width: 10rem;
+  background-color: #ff9b17;
+  border: 0;
+  outline: 0;
+  height: 1.5rem;
+  border-radius: 5px;
+  color: #fff;
+
+}
+.city-select:hover{
+  cursor: pointer;
+}
 .body {
   margin: 1rem;
 }
@@ -52,7 +68,6 @@
 }
 .ind-card:hover {
   cursor: pointer;
-  /* outline: 1px solid black; */
   box-shadow: 0 0 10px rgb(80, 78, 78);
 }
 .ind-card img {
@@ -126,7 +141,6 @@
 
 .shimmer-container-2 {
   display: flex;
-  /* flex-wrap: wrap; */
   gap: 1.15rem;
   flex-direction: column;
   justify-content: center;
@@ -299,4 +313,4 @@ a {
   margin: 2rem;
   padding: 1rem;
   border: 1px solid rgb(155, 155, 155);
-}
+} */

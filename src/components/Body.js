@@ -3,32 +3,17 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer1";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
+import useBody from "./utils/useBody";
 
 const Body = () => {
-  const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredRestaurants, setfilteredRestaurants] = useState([]);
   const [searchText, setsearchText] = useState("");
-  console.log("body rendered");
+
+
+  const listOfRestaurant = useBody();
   useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/search/v3?lat=26.8466937&lng=80.94616599999999&str=restaurants&trackingId=undefined&submitAction=ENTER&queryUniqueId=3c0571b4-390c-0971-7341-d7dc15d44c25"
-    );
-
-    const json = await data.json();
-
-    const listofrestaurantsarr = json?.data?.cards;
-    listofrestaurantsarr.forEach((c) => {
-      const validlistofrestaurants =
-        c.groupedCard?.cardGroupMap?.RESTAURANT?.cards;
-      if (validlistofrestaurants) {
-        setListOfRestaurant(validlistofrestaurants);
-        setfilteredRestaurants(validlistofrestaurants);
-      }
-    });
-  };
+    setfilteredRestaurants(listOfRestaurant);
+  }, [listOfRestaurant]);
 
  const onlineStatus = useOnlineStatus();
 

@@ -8,7 +8,7 @@ const RestaurantCard = (props) => {
         <h3>{props.resName}</h3>
         <p>{props.cuisine}</p>
         <p>{props.deltime}</p>
-        <p>{props.rating}⭐</p>
+        <p>{props.rating || 4.1}⭐</p>
         <p>{props.costforTwo}</p>
       </div>
     </div>

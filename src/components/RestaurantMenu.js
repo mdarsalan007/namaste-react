@@ -1,30 +1,21 @@
 import { useState, useEffect } from "react";
 import Shimmer2 from "./Shimmer2";
-import { useParams } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
+import useRestaurantMenu from "./utils/useRestaurantMenu";
+import { useParams } from "react-router-dom";
+
+
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const [apidatainfo, setapidatainfo] = useState(null);
   const [menupath, setmenupath] = useState([]);
   const [MenuCategories, setMenuCategories] = useState({});
 
+
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
 
-  const fetchMenu = async () => {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.8466937&lng=80.94616599999999&restaurantId=` +
-        resId +
-        `&catalog_qa=undefined&submitAction=ENTER`
-    );
-    const json = await data.json();
-    setResInfo(json);
-  };
-
+  const resInfo = useRestaurantMenu(resId);
   useEffect(() => {
     if (resInfo) {
       const apidatainfoArr = resInfo?.data?.cards;
@@ -89,9 +80,9 @@ const RestaurantMenu = () => {
           <span style={{ color: "green" }}>★</span>
           {avgRating || 4.1}({totalRatingsString || `134 ratings` }) - {costForTwoMessage}
         </p>
-
+{/* data.cards[1].groupedCard.cardGroupMap.RESTAURANT.cards[0].card.card.info.sla.slaString */}
         <p className="cuisines-line">{cuisines?.join(", ")}</p>
-        <p className="time-to-reach-line">{sla.slaString}</p>
+        <p className="time-to-reach-line">{sla?.slaString}</p>
         <p className="address-line">
           Add - {locality}, {areaName}, {city}
         </p>
