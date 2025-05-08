@@ -4,7 +4,6 @@ import { useOutletContext } from "react-router-dom"
 
 const useBody = ()=>{
   const { selectedCity } = useOutletContext(); 
-  console.log(selectedCity);
     const [listOfRestaurant, setListOfRestaurant] = useState([]);
 
   

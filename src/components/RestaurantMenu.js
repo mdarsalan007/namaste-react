@@ -3,6 +3,7 @@ import Shimmer2 from "./Shimmer2";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import useRestaurantMenu from "./utils/useRestaurantMenu";
 import { useParams } from "react-router-dom";
+import ItemList from "./ItemList";
 
 
 
@@ -10,6 +11,15 @@ const RestaurantMenu = () => {
   const [apidatainfo, setapidatainfo] = useState(null);
   const [menupath, setmenupath] = useState([]);
   const [MenuCategories, setMenuCategories] = useState({});
+
+  // const [showMenu,setshowMenu] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(null);
+
+
+  const handleCategoryClick = (categoryName) => {
+    setActiveCategory((prev) => (prev === categoryName ? null : categoryName));
+  };
+  
 
 
   const { resId } = useParams();
@@ -73,15 +83,15 @@ const RestaurantMenu = () => {
     city,
   } = apidatainfo;
   return (
-    <div className="menu-page">
-      <h3 className="menu-page-res-name">{name}</h3>
-      <div className="res-info-box">
-        <p className="rating-line">
+    <div className="menu-page  flex flex-col items-center ">
+      <h3 className="menu-page-res-name font-bold text-3xl my-3 mt-6 w-150">{name}</h3>
+      <div className="res-info-box flex flex-col mt-1 w-150 bg-gray-200 p-2 font-[500] rounded-2xl">
+        <p className="rating-line ">
           <span style={{ color: "green" }}>★</span>
           {avgRating || 4.1}({totalRatingsString || `134 ratings` }) - {costForTwoMessage}
         </p>
 {/* data.cards[1].groupedCard.cardGroupMap.RESTAURANT.cards[0].card.card.info.sla.slaString */}
-        <p className="cuisines-line">{cuisines?.join(", ")}</p>
+        <p className="cuisines-line text-[#ff6f00]">{cuisines?.join(", ")}</p>
         <p className="time-to-reach-line">{sla?.slaString}</p>
         <p className="address-line">
           Add - {locality}, {areaName}, {city}
@@ -90,39 +100,20 @@ const RestaurantMenu = () => {
 
       {Object.entries(MenuCategories).map(([categoryName, items]) => (
         <div key={categoryName}>
-          <div className="category-heading">
-            {categoryName} ({items.length})
+          <button onClick={() => handleCategoryClick(categoryName)} className="w-150 cursor-pointer mt-8 shadow-gray-600 shadow-md rounded-md">
+          <div className="category-heading text-xl font-bold   p-2 px-3 flex justify-between items-center ">
+            <span>{categoryName} ({items.length})</span>
+            <span className="">{activeCategory === categoryName ? "⬆️" : "⬇️"}</span> 
           </div>
+          </button>
 
-          {items.map((item) => {
+          {(activeCategory === categoryName) && items.map((item) => {
             const { id, name, description, price, defaultPrice,ratings, imageId } =
               item.card.info;
 
-            return (
-              <div className="dish-card-parent" key={id}>
-                <div className="dish-card">
-                  <p className="dish-name">{name}</p>
-                  <p className="dish-price">₹{price/100 ||defaultPrice / 100}</p>
-                  <p className="rating-line">
-                    <span style={{ color: "green" }}>★</span>
-                    {ratings?.aggregatedRating?.rating || 4} (
-                    {ratings?.aggregatedRating?.ratingCountV2 || 113}{` ratings`}) 
-                  </p>
-                  <p className="dish-description">
-                    {description ||
-                      "A thoughtfully prepared dish to satisfy your cravings.Made with care to please your palate. A delightful addition to your meal."}
-                  </p>
-                </div>
-                {imageId && (
-                  <div className="dish-image">
-                    <img
-                      src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${imageId}`}
-                    />
-                  </div>
-                )}
-              </div>
-            );
-          })}
+           return(<ItemList key={id} {...item.card.info} />)
+}
+          )}
         </div>
       ))}
     </div>

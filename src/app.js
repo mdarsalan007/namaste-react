@@ -26,8 +26,8 @@ const AppLayout = () => {
   });
   return (
     <div className="app">
-      <Header onCityChange={setSelectedCity} />
-      <Outlet context={{ selectedCity }} />  {/* Pass selected city to children */}
+      <Header onCityChange={setSelectedCity}  />
+      <Outlet className="font-sans" context={{ selectedCity }} />  {/* Pass selected city to children */}
     </div>
   );
 };
@@ -35,7 +35,7 @@ const AppLayout = () => {
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout/>,
+    element: <AppLayout  />,
     children: [
       {
         path:"/",
