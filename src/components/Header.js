@@ -1,14 +1,20 @@
 import { LOGO_URL } from "./utils/constants";
-import { useState } from "react";
+import { useState  } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import cities from "./utils/cities";
+import { useSelector } from "react-redux";
+// import UserContext from "./utils/UserContext";
 
 
 const Header = ({ onCityChange }) => {
   const [btnName, setbtnName] = useState("Login");
   // setbtnName("Login");
   const onlineStatus = useOnlineStatus();
+
+  // const {loggedInUser} = useContext(UserContext);
+
+  const cartItems  = useSelector((store)=>store.cart.items);
 
 
 
@@ -47,14 +53,15 @@ const Header = ({ onCityChange }) => {
           <li className="mx-4 text-[15px] font-medium">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="mx-4 text-[15px] font-medium cursor-pointer">Cart</li>
+          <li className="w-16 mx-4 text-[15px] font-medium cursor-pointer"><Link to="/cart">Cart-({cartItems.length})</Link></li>
           <button
              className="mx-4 text-[15px] font-medium mr-6 w-20 bg-[#ffa938] border-0 outline-0 rounded-sm h-7 cursor-pointer"
             onClick={() => {
               btnName === "Login" ? setbtnName("LogOut") : setbtnName("Login");
             }}
           >
-            {btnName}
+            {btnName }
+            {/* <div>{loggedInUser}</div> */}
           </button>
         </ul>
       </div>

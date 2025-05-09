@@ -1,4 +1,4 @@
-import React, { lazy ,Suspense} from "react";
+import React, { lazy ,Suspense, useEffect} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,6 +8,10 @@ import { createBrowserRouter , RouterProvider, Outlet} from "react-router-dom";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { useState } from "react";
+import UserContext from "./components/utils/UserContext";
+import { Provider } from "react-redux";
+import appSore from "./components/utils/appStore";
+import Cart from "./components/Cart"
 
 
 const Grocery = lazy(()=>import("./components/Grocery"));
@@ -24,11 +28,23 @@ const AppLayout = () => {
     lat: 28.7040592, 
     lng: 77.10249019999999,
   });
+
+  const [userInfo, setUserInfo] = useState();
+  const data={
+    name: "Mohd Arsalan",
+  }
+  useEffect(()=>{
+    setUserInfo(data.name);
+  },[])
   return (
-    <div className="app">
-      <Header onCityChange={setSelectedCity}  />
-      <Outlet className="font-sans" context={{ selectedCity }} />  {/* Pass selected city to children */}
-    </div>
+    <Provider store={appSore}>
+    <UserContext.Provider value={{loggedInUser:userInfo}}>
+      <div className="app">
+        <Header onCityChange={setSelectedCity}  />
+        <Outlet className="font-sans" context={{ selectedCity }} />  {/* Pass selected city to children */}
+      </div>
+    </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -56,6 +72,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/grocery",
         element: (<Suspense fallback = {<h2>Loading...</h2>}><Grocery/></Suspense>)
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
       }
     ],
     errorElement: <Error/>,

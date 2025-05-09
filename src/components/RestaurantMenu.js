@@ -101,7 +101,7 @@ const RestaurantMenu = () => {
       {Object.entries(MenuCategories).map(([categoryName, items]) => (
         <div key={categoryName}>
           <button onClick={() => handleCategoryClick(categoryName)} className="w-150 cursor-pointer mt-8 shadow-gray-600 shadow-md rounded-md">
-          <div className="category-heading text-xl font-bold   p-2 px-3 flex justify-between items-center ">
+          <div className="category-heading text-lg font-bold   p-2 px-3 flex justify-between items-center ">
             <span>{categoryName} ({items.length})</span>
             <span className="">{activeCategory === categoryName ? "⬆️" : "⬇️"}</span> 
           </div>
