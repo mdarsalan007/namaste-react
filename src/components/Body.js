@@ -1,6 +1,5 @@
 import RestaurantCard,{withPromotedLabel} from "./RestaurantCard";
 import { useState, useEffect } from "react";
-import Shimmer1 from "./Shimmer1";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import useBody from "./utils/useBody";
@@ -46,7 +45,7 @@ const Body = () => {
               setfilteredRestaurants(filteredReastaurants);
             }}
           >
-            Seacrh
+            Search
           </button>
         </div>
         <button
@@ -95,6 +94,7 @@ const Body = () => {
                 costforTwo={costForTwoMessage}
               />}
             </Link>
+            
           );
         })}
       </div>
