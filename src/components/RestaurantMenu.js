@@ -83,7 +83,7 @@ const RestaurantMenu = () => {
     city,
   } = apidatainfo;
   return (
-    <div className="menu-page  flex flex-col items-center ">
+    <div  className="menu-page  flex flex-col items-center ">
       <h3 className="menu-page-res-name font-bold text-3xl my-3 mt-6 w-150">{name}</h3>
       <div className="res-info-box flex flex-col mt-1 w-150 bg-gray-200 p-2 font-[500] rounded-2xl">
         <p className="rating-line ">
@@ -99,7 +99,7 @@ const RestaurantMenu = () => {
       </div>
 
       {Object.entries(MenuCategories).map(([categoryName, items]) => (
-        <div key={categoryName}>
+        <div  key={categoryName}>
           <button onClick={() => handleCategoryClick(categoryName)} className="w-150 cursor-pointer mt-8 shadow-gray-600 shadow-md rounded-md">
           <div className="category-heading text-lg font-bold   p-2 px-3 flex justify-between items-center ">
             <span>{categoryName} ({items.length})</span>
@@ -108,10 +108,11 @@ const RestaurantMenu = () => {
           </button>
 
           {(activeCategory === categoryName) && items.map((item) => {
+            
             const { id, name, description, price, defaultPrice,ratings, imageId } =
               item.card.info;
 
-           return(<ItemList key={id} {...item.card.info} />)
+           return(<ItemList  key={id} {...item.card.info} />)
 }
           )}
         </div>

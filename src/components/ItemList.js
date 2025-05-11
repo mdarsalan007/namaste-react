@@ -13,7 +13,7 @@ const ItemList = ({id, name, description, price, defaultPrice,ratings, imageId,c
 
 
     return (
-        <div className="dish-card-parent flex  justify-between w-150   px-2 bg-gray-100 rounded-md  mt-4  shadow-md shadow-gray-600" key={id}>
+        <div data-testid = "foodItems" className="dish-card-parent flex  justify-between w-150   px-2 bg-gray-100 rounded-md  mt-4  shadow-md shadow-gray-600" key={id}>
           <div className="dish-card flex flex-col  w-110 px-2 py-1">
             <p className="dish-name font-medium text-lg">{name}</p>
             <p className="dish-price font-bold text-sm">₹{price/100 ||defaultPrice / 100}</p>

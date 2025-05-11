@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Body from "../Body";
 import { MemoryRouter, Routes, Route, Outlet, BrowserRouter } from "react-router-dom";
 import MOCK_DATA from "../mocks/mock.bodyapi.json"
@@ -40,6 +40,16 @@ it("should render the body comp. with Search", async () => {
   ));
   
 
-  const search = screen.getByText("Search");
-  expect(search).toBeInTheDocument();
+  // const searchBtn = screen.getByRole("button", { name: "Search" });
+  const filterBtn = screen.getByRole("button", { name: "Top Rated Restaurants" });
+  // const searchInput = screen.getByTestId("SearchInput");
+
+  // fireEvent.change(searchInput, {target:{value:"food"}}); // for delhi
+  // fireEvent.click(searchBtn);
+  fireEvent.click(filterBtn);
+
+  const cards = screen.getAllByTestId("resCard");
+
+  // expect(cards.length).toBe(2); /// to match these numbers u have have to use the current api json as MOCK_DATA <-- important
+  expect(cards.length).toBe(14);
 });
